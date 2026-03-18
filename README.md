@@ -2,11 +2,10 @@
 ### `tkh-ifcs-p1-student` · Class of 2026
 
 ---
-
 ```
  _____ _  ___   _   ___ _  _             _
 |_   _| |/ / | | | |_ _| \| |_ __  ___ _| |_ ___ _ _
-  | | | ' /| |_| |  | || .` | '_ \/ _ \ |  _/ -_) '_|
+  | | | ' /| |_| |  | || .\` | '_ \/ _ \ |  _/ -_) '_|
   |_| |_|\_\ \___/  |___|_|\_| .__/\___/_|\__\___|_|
                                |_|
   Cybersecurity · Phase 1 · Spring 2026
@@ -38,7 +37,6 @@ make it better. That's the point.
 ---
 
 ## 📁 Repository Structure
-
 ```
 tkh-ifcs-p1-student/
 │
@@ -48,11 +46,14 @@ tkh-ifcs-p1-student/
 │   ├── final_threat_report.txt    # TLAB-01 — Operation Clean Sweep
 │   └── harden.sh                  # Night 2 — hardening script
 │
-├── week-02/                       # Active — March 16–18
+├── week-02/
+│   ├── harden_output.txt          # Night 1 — access control lab output
+│   ├── subnet_blueprint.txt       # Night 2 — subnetting artifact (S05)
+│   └── protocol_audit.txt         # Night 3 — protocol interrogation (S06)
+│
 ├── week-03/                       # Coming March 23–25
 │
 └── README.md
-
 ```
 
 ---
@@ -70,8 +71,6 @@ tkh-ifcs-p1-student/
 
 ## 🚀 Getting Started
 
-New to the program? Here's how to clone this repo and set up your environment.
-
 **Step 1 — Clone the repo**
 ```bash
 git clone git@github.com:janepierresgithub/tkh-ifcs-p1-student.git
@@ -80,18 +79,21 @@ cd tkh-ifcs-p1-student
 
 **Step 2 — Run the lab bootstrap**
 ```bash
-# Night 1
-curl -sL https://gist.githubusercontent.com/grobbins-cell/raw/setup_lab_01.sh | bash
+# Night 1 (S01)
+curl -sL https://gist.githubusercontent.com/grobbins-cell/126d5c64f5f071ae950cc18c09b391fa/raw | bash
 
-# Night 3
+# Night 2 (S02)
+curl -sL https://gist.githubusercontent.com/grobbins-cell/8dea0f5a0c65b29efe0b91dd3afa6842/raw/698804520709884999cba0c54411303bff3ae6aa/setup_lab_02.sh | bash
+
+# Night 3 (S03)
 curl -sL https://gist.githubusercontent.com/grobbins-cell/610867dae208e88154070b0ca78084df/raw/661e54024519f558ba4ed7e5d78655a429bef748/setup_lab_03.sh | bash
 ```
 
-**Step 3 — Do the work, then push it**
+**Step 3 — Push your work**
 ```bash
 git add .
 git commit -m "feat: add week-01 lab artifacts"
-git push origin main
+git push origin master
 ```
 
 ---
@@ -102,9 +104,7 @@ git push origin main
 Your first night in a headless Linux environment. No GUI. Just you and the terminal.
 
 Key skills: `ls` `cd` `pwd` `mkdir` `cat` `find` `man` · FHS navigation · SSH · Git setup
-
 ```bash
-# The command that started everything
 ssh jane@janetheta
 ```
 
@@ -115,11 +115,11 @@ Who can read it? Who can write it? Who can run it? Linux answers these questions
 with nine bits and three letters: `rwx`.
 
 Key skills: `chmod` `chown` `ls -la` · SUID auditing · Principle of Least Privilege
-
 ```bash
-# Lock down your SSH directory
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
+sudo chmod 640 /etc/shadow
+sudo chown root:shadow /etc/shadow
 ```
 
 ---
@@ -129,9 +129,7 @@ chmod 600 ~/.ssh/authorized_keys
 One pipeline to find them all.
 
 Key skills: `grep` `awk` `sed` `sort` `uniq` · stdout redirection · pipeline chaining
-
 ```bash
-# The pipeline that extracts attacker IPs from a live log
 grep "UNION SELECT" ~/access.log \
     | awk '{print $1}' \
     | sort | uniq \
@@ -140,10 +138,49 @@ grep "UNION SELECT" ~/access.log \
 
 ---
 
+## 📡 Week 02 — In Progress
+
+### 🌐 Night 1 · Network Recon
+Your machine has an IP. Your network has a gateway. Tonight you learn how to
+read, interrogate, and verify both.
+
+Key skills: `ip addr` `ip route` `ping` `traceroute` `nmcli`
+```bash
+ip addr show
+ip route show
+ping -c 4 8.8.8.8
+traceroute google.com
+```
+
+---
+
+### 🧮 Night 2 · The Subnetting Crucible
+Binary math. CIDR notation. Network IDs and Broadcast IDs.
+
+Key skills: `ipcalc` · binary conversion · CIDR · subnet masks
+```bash
+ipcalc 10.50.50.1/26
+# Artifact: subnet_blueprint.txt
+```
+
+---
+
+### 🔌 Night 3 · Protocol Interrogation
+DNS poisoning. Hidden services. Ports that should not be open.
+
+Key skills: `ss -tuln` `curl -I` `dig` `cat /etc/hosts` · TCP vs UDP
+```bash
+ss -tuln
+curl -I localhost:8080
+dig google.com
+# Artifact: protocol_audit.txt
+```
+
+---
+
 ## 💡 Core Concepts
 
 ### The CIA Triad
-Everything in cybersecurity comes back to three things:
 
 | Property | Question It Answers | Example |
 |---|---|---|
@@ -160,8 +197,8 @@ awk   →  extracts specific columns from data    (The Formatter)
 
 ### Git as an Accountability Tool
 Every `git commit` creates a cryptographic hash — a tamper-evident, timestamped,
-attributed record of exactly what changed and when. That's not just version control.
-That's **Accounting** — the third pillar of the AAA framework.
+attributed record of exactly what changed and when. That is Accounting — the
+third pillar of the AAA framework.
 
 ---
 
