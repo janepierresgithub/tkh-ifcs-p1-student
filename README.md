@@ -43,14 +43,16 @@ make it better. That's the point.
 tkh-ifcs-p1-student/
 │
 ├── week-01/
-│   ├── discovery.txt          # Filesystem recon — Night 1 lab output
-│   ├── threat_ips.txt         # Extracted attacker IPs — Night 3 lab output
-│   └── notes.md               # Week 01 concept notes
+│   ├── discovery.txt              # Night 1 — filesystem recon output
+│   ├── threat_ips.txt             # Night 3 — extracted attacker IPs
+│   ├── final_threat_report.txt    # TLAB-01 — Operation Clean Sweep
+│   └── harden.sh                  # Night 2 — hardening script
 │
-├── week-02/                   # Coming March 17
-├── week-03/                   # Coming March 24
+├── week-02/                       # Active — March 16–18
+├── week-03/                       # Coming March 23–25
 │
 └── README.md
+
 ```
 
 ---
@@ -59,10 +61,10 @@ tkh-ifcs-p1-student/
 
 | Week | Dates | Theme | Status |
 |:---:|:---:|---|:---:|
-| 01 | Mar 10–12 | Terminal · Permissions · Stream Editing · Git | ✅ |
-| 02 | Mar 17–19 | Access Control · Cryptography · Networking | ⏳ |
-| 03 | Mar 24–26 | Advanced Automation · Bash Scripting · Cron | ⏳ |
-| 04 | Mar 31–Apr 2 | Reconnaissance · OSINT · Threat Modeling | ⏳ |
+| 01 | Mar 9–11 | Terminal · Permissions · Stream Editing · Git | ✅ |
+| 02 | Mar 16–18 | Networking · Subnetting · Protocol Interrogation | 🔄 |
+| 03 | Mar 23–25 | Advanced Automation · Bash Scripting · Cron | ⏳ |
+| 04 | Mar 30–Apr 1 | Reconnaissance · OSINT · Threat Modeling | ⏳ |
 
 ---
 
