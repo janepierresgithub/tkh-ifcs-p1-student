@@ -64,8 +64,8 @@ tkh-ifcs-p1-student/
 | Week | Dates | Theme | Status |
 |:---:|:---:|---|:---:|
 | 01 | Mar 9–11 | Terminal · Permissions · Stream Editing · Git | ✅ |
-| 02	Mar 16–18	Networking · Subnetting · Protocol Interrogation	✅ |
-| 03	Mar 23–25	Advanced Automation · Bash Scripting · Cron	🔄 |
+| 02 | Mar 16–18 | Networking · Subnetting · Protocol Interrogation | ✅ |
+| 03 | Mar 23–25 | Python Scripting · Port Scanner · Brute Force Detector · Process Auditor | 🔄 |
 | 04 | Mar 30–Apr 1 | Reconnaissance · OSINT · Threat Modeling | ⏳ |
 
 ---
@@ -175,6 +175,41 @@ ss -tuln
 curl -I localhost:8080
 dig google.com
 # Artifact: protocol_audit.txt
+```
+
+---
+
+## 🐍 Week 03 — Coming Up
+
+### 🔭 Night 1 · Port Scanner
+No Nmap. Just Python and raw sockets. You will write a script that sweeps a target host and reports which ports are open.
+
+Key skills: `python3` · `socket` · `argparse` · port ranges · output formatting
+```bash
+python3 port_scanner.py --target 10.0.2.2 --range 1-1024
+# Artifact: port_scanner.py
+```
+
+---
+
+### 🚨 Night 2 · Brute Force Detector
+Parse auth logs. Count repeated failed login attempts per IP. Flag anything that crosses the threshold.
+
+Key skills: `python3` · file I/O · dictionaries · threshold logic
+```bash
+python3 brute_detector.py --log /var/log/auth.log --threshold 5
+# Artifact: brute_detector.py
+```
+
+---
+
+### 🔎 Night 3 · Process Auditor
+List every running process on the system. Flag unexpected ports, unknown owners, and anything that should not be there.
+
+Key skills: `python3` · `psutil` · `subprocess` · process introspection
+```bash
+python3 process_auditor.py
+# Artifact: process_auditor.py
 ```
 
 ---
