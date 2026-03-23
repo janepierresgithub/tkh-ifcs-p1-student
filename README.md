@@ -47,9 +47,10 @@ tkh-ifcs-p1-student/
 │   └── harden.sh                  # Night 2 — hardening script
 │
 ├── week-02/
-│   ├── harden_output.txt          # Night 1 — access control lab output
+│   ├── network_audit.txt          # S04 — interface restoration output
 │   ├── subnet_blueprint.txt       # Night 2 — subnetting artifact (S05)
-│   └── protocol_audit.txt         # Night 3 — protocol interrogation (S06)
+│   ├── protocol_audit.txt         # S06 — protocol interrogation
+│   └── tlab_report.txt            # TLAB — Operation Blackout
 │
 ├── week-03/                       # Coming March 23–25
 │
@@ -63,8 +64,8 @@ tkh-ifcs-p1-student/
 | Week | Dates | Theme | Status |
 |:---:|:---:|---|:---:|
 | 01 | Mar 9–11 | Terminal · Permissions · Stream Editing · Git | ✅ |
-| 02 | Mar 16–18 | Networking · Subnetting · Protocol Interrogation | 🔄 |
-| 03 | Mar 23–25 | Advanced Automation · Bash Scripting · Cron | ⏳ |
+| 02	Mar 16–18	Networking · Subnetting · Protocol Interrogation	✅ |
+| 03	Mar 23–25	Advanced Automation · Bash Scripting · Cron	🔄 |
 | 04 | Mar 30–Apr 1 | Reconnaissance · OSINT · Threat Modeling | ⏳ |
 
 ---
