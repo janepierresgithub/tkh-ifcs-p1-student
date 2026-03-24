@@ -2,10 +2,15 @@
 ### `tkh-ifcs-p1-student` · Class of 2026
 
 ---
+cat > ~/tkh-ifcs-p1-student/README.md << 'EOF'
+# TKH Innovation Fellowship — Phase 1 Cybersecurity
+### `tkh-ifcs-p1-student` · Class of 2026
+
+---
 ```
  _____ _  ___   _   ___ _  _             _
 |_   _| |/ / | | | |_ _| \| |_ __  ___ _| |_ ___ _ _
-  | | | ' /| |_| |  | || .\` | '_ \/ _ \ |  _/ -_) '_|
+  | | | ' /| |_| |  | || .` | '_ \/ _ \ |  _/ -_) '_|
   |_| |_|\_\ \___/  |___|_|\_| .__/\___/_|\__\___|_|
                                |_|
   Cybersecurity · Phase 1 · Spring 2026
@@ -48,16 +53,19 @@ tkh-ifcs-p1-student/
 │
 ├── week-02/
 │   ├── network_audit.txt          # S04 — interface restoration output
-│   ├── subnet_blueprint.txt       # Night 2 — subnetting artifact (S05)
+│   ├── subnet_blueprint.txt       # S05 — subnetting artifact
 │   ├── protocol_audit.txt         # S06 — protocol interrogation
 │   └── tlab_report.txt            # TLAB — Operation Blackout
 │
 ├── week-03/                       # March 23–25
-│   ├── port_scanner.py            # Night 1 — Python raw socket scanner
-│   ├── brute_detector.py          # Night 2 — Auth log threshold logic
-│   ├── process_auditor.py         # Night 3 — psutil process introspection
-│   ├── port_check.py              # Session 07 — Scripting automation
-│   └── s07reflection.md           # Session 07 — Reflection & Documentation
+│   ├── port_check.py              # S07 — Python port scanner
+│   ├── brute_detector.py          # S08 — Auth log brute force detector
+│   ├── system_auditor.py          # S09 — Automated process auditor
+│   └── reflections/
+│       ├── s07_reflection.md      # S07 — Lists, loops, and automation
+│       ├── s08_reflection.md      # S08 — File I/O and forensic filtering
+│       └── s09_reflection.md      # S09 — subprocess and JSON alerting
+│
 └── README.md
 ```
 
@@ -70,7 +78,7 @@ tkh-ifcs-p1-student/
 | 01 | Mar 9–11 | Terminal · Permissions · Stream Editing · Git | ✅ |
 | 02 | Mar 16–18 | Networking · Subnetting · Protocol Interrogation | ✅ |
 | 03 | Mar 23–25 | Python Scripting · Port Scanner · Brute Force Detector · Process Auditor | 🔄 |
-| 04 | Mar 30–Apr 1 | Reconnaissance · OSINT · Threat Modeling | ⏳ |
+| 04 | Mar 30–Apr 1 | Virtualization · Docker · Container Security | ⏳ |
 
 ---
 
@@ -92,12 +100,15 @@ curl -sL https://gist.githubusercontent.com/grobbins-cell/8dea0f5a0c65b29efe0b91
 
 # Night 3 (S03)
 curl -sL https://gist.githubusercontent.com/grobbins-cell/610867dae208e88154070b0ca78084df/raw/661e54024519f558ba4ed7e5d78655a429bef748/setup_lab_03.sh | bash
+
+# Session 07 (S07)
+curl -sL https://gist.githubusercontent.com/grobbins-cell/eea802f31544515afd22877b0c85502b/raw/s07_provisioning.sh | sudo bash
 ```
 
 **Step 3 — Push your work**
 ```bash
 git add .
-git commit -m "feat: add week-01 lab artifacts"
+git commit -m "edited: port_check.py"
 git push origin master
 ```
 
@@ -143,7 +154,7 @@ grep "UNION SELECT" ~/access.log \
 
 ---
 
-## 📡 Week 02 — In Progress
+## 📡 Week 02 — Completed
 
 ### 🌐 Night 1 · Network Recon
 Your machine has an IP. Your network has a gateway. Tonight you learn how to
@@ -183,37 +194,40 @@ dig google.com
 
 ---
 
-## 🐍 Week 03 — Coming Up
+## 🐍 Week 03 — In Progress
 
-### 🔭 Night 1 · Port Scanner
-No Nmap. Just Python and raw sockets. You will write a script that sweeps a target host and reports which ports are open.
+### 🔭 Night 1 · The Automation Forge
+No Nmap. Just Python and raw sockets. Write a script that checks whether
+Port 22 is open across a list of target IPs — and does it automatically.
 
-Key skills: `python3` · `socket` · `argparse` · port ranges · output formatting
+Key skills: `python3` · `socket` · `for` loops · data types · `connect_ex`
 ```bash
-python3 port_scanner.py --target 10.0.2.2 --range 1-1024
-# Artifact: port_scanner.py
+python3 port_check.py
+# Artifact: port_check.py
 ```
 
 ---
 
-### 🚨 Night 2 · Brute Force Detector
-Parse auth logs. Count repeated failed login attempts per IP. Flag anything that crosses the threshold.
+### 🚨 Night 2 · The Paper Trail
+Parse a simulated auth log. Extract every failed login attempt.
+Write the findings to a clean report automatically.
 
-Key skills: `python3` · file I/O · dictionaries · threshold logic
+Key skills: `python3` · file I/O · `with open()` · `try/except` · string matching
 ```bash
-python3 brute_detector.py --log /var/log/auth.log --threshold 5
+python3 brute_detector.py
 # Artifact: brute_detector.py
 ```
 
 ---
 
-### 🔎 Night 3 · Process Auditor
-List every running process on the system. Flag unexpected ports, unknown owners, and anything that should not be there.
+### 🔎 Night 3 · The Automation Pivot
+Give Python the keys to the OS. Run system commands from inside a script,
+capture the output, and export a structured JSON security alert.
 
-Key skills: `python3` · `psutil` · `subprocess` · process introspection
+Key skills: `python3` · `subprocess` · `json` · `os` · process interrogation
 ```bash
-python3 process_auditor.py
-# Artifact: process_auditor.py
+python3 system_auditor.py
+# Artifact: system_auditor.py
 ```
 
 ---
@@ -266,4 +280,4 @@ National Institute of Standards and Technology.
 
 ---
 
-*Built in public · Updated weekly · TKH IF 2026 · Class of 2026*
+**Built intentionally · Current Status: Updated weekly · TKH IF 2026**
