@@ -2,10 +2,6 @@
 ### `tkh-ifcs-p1-student` · Class of 2026
 
 ---
-# TKH Innovation Fellowship — Phase 1 Cybersecurity
-### `tkh-ifcs-p1-student` · Class of 2026
-
----
 ```
  _____ _  ___   _   ___ _  _             _
 |_   _| |/ / | | | |_ _| \| |_ __  ___ _| |_ ___ _ _
@@ -22,7 +18,7 @@
 
 ---
 
-## 👋 Welcome
+## 👋🏽 Welcome
 
 This is my student artifact repository for **Phase 1** of the TKH Innovation
 Fellowship Cybersecurity program. Every week I'll be pushing the work I build
