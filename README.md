@@ -52,8 +52,12 @@ tkh-ifcs-p1-student/
 │   ├── protocol_audit.txt         # S06 — protocol interrogation
 │   └── tlab_report.txt            # TLAB — Operation Blackout
 │
-├── week-03/                       # Coming March 23–25
-│
+├── week-03/                       # March 23–25
+│   ├── port_scanner.py            # Night 1 — Python raw socket scanner
+│   ├── brute_detector.py          # Night 2 — Auth log threshold logic
+│   ├── process_auditor.py         # Night 3 — psutil process introspection
+│   ├── port_check.py              # Session 07 — Scripting automation
+│   └── s07reflection.md           # Session 07 — Reflection & Documentation
 └── README.md
 ```
 
