@@ -2,7 +2,6 @@
 ### `tkh-ifcs-p1-student` · Class of 2026
 
 ---
-cat > ~/tkh-ifcs-p1-student/README.md << 'EOF'
 # TKH Innovation Fellowship — Phase 1 Cybersecurity
 ### `tkh-ifcs-p1-student` · Class of 2026
 
