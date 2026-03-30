@@ -3,11 +3,11 @@
 
 ---
 ```
- _____ _  ___   _   ___ _  _             _
-|_   _| |/ / | | | |_ _| \| |_ __  ___ _| |_ ___ _ _
-  | | | ' /| |_| |  | || .` | '_ \/ _ \ |  _/ -_) '_|
-  |_| |_|\_\ \___/  |___|_|\_| .__/\___/_|\__\___|_|
-                               |_|
+ _____ _  ___   _  _   ___ ___ _    _    _____      __  ___  ___ ___  ___  
+|_   _| |/ / | | || | | __| __| |  | |  / _ \ \    / / | _ \| __| _ \/ _ \ 
+  | | | ' /| |_| __ | | _|| _|| |__| |_| (_) \ \/\/ /  |   /| _||  _/ (_) |
+  |_| |_|\_\ \___/_||_| |___|___|____|____\___/ \_/\_/   |_|_\|___|_|  \___/ 
+
   Cybersecurity · Phase 1 · Spring 2026
 ```
 
@@ -41,25 +41,25 @@ make it better. That's the point.
 tkh-ifcs-p1-student/
 │
 ├── week-01/
-│   ├── discovery.txt              # Night 1 — filesystem recon output
-│   ├── threat_ips.txt             # Night 3 — extracted attacker IPs
-│   ├── final_threat_report.txt    # TLAB-01 — Operation Clean Sweep
-│   └── harden.sh                  # Night 2 — hardening script
+│   ├── discovery.txt              # S01 — filesystem recon output
+│   ├── harden.sh                  # S02 — hardening script
+│   ├── threat_ips.txt             # S03 — extracted attacker IPs
+│   └── final_threat_report.txt    # TLAB-01 — Operation Clean Sweep
 │
 ├── week-02/
-│   ├── network_audit.txt          # S04 — interface restoration output
-│   ├── subnet_blueprint.txt       # S05 — subnetting artifact
-│   ├── protocol_audit.txt         # S06 — protocol interrogation
-│   └── tlab_report.txt            # TLAB — Operation Blackout
+│   ├── network_audit.txt          # S04 — Operation Broken Link
+│   ├── subnet_blueprint.txt       # S05 — Operation Grid Lock
+│   ├── protocol_audit.txt         # S06 — Operation Hidden Door
+│   └── tlab_report.txt            # TLAB-02 — Operation Blackout
 │
-├── week-03/                       # March 23–25
+├── week-03/
 │   ├── port_check.py              # S07 — Python port scanner
-│   ├── brute_detector.py          # S08 — Auth log brute force detector
-│   ├── system_auditor.py          # S09 — Automated process auditor
-│   └── reflections/
-│       ├── s07_reflection.md      # S07 — Lists, loops, and automation
-│       ├── s08_reflection.md      # S08 — File I/O and forensic filtering
-│       └── s09_reflection.md      # S09 — subprocess and JSON alerting
+│   ├── brute_detector.py          # S08 — auth log brute force detector
+│   ├── brute_report.txt           # S08 — brute force findings
+│   ├── system_auditor.py          # S09 — automated process auditor
+│   ├── incident_response.py       # S09 — threat response script
+│   ├── security_alert.json        # S09 — structured JSON alert
+│   └── handshake.txt              # S09 — tcpdump capture
 │
 └── README.md
 ```
@@ -72,7 +72,7 @@ tkh-ifcs-p1-student/
 |:---:|:---:|---|:---:|
 | 01 | Mar 9–11 | Terminal · Permissions · Stream Editing · Git | ✅ |
 | 02 | Mar 16–18 | Networking · Subnetting · Protocol Interrogation | ✅ |
-| 03 | Mar 23–25 | Python Scripting · Port Scanner · Brute Force Detector · Process Auditor | 🔄 |
+| 03 | Mar 23–25 | Python Scripting · Port Scanner · Brute Force Detector · Process Auditor | ✅ |
 | 04 | Mar 30–Apr 1 | Virtualization · Docker · Container Security | ⏳ |
 
 ---
@@ -109,9 +109,9 @@ git push origin master
 
 ---
 
-## 📚 Week 01 — What We Covered
+## 📚 Week 01 — Completed
 
-### 🌱 Night 1 · Terminal Genesis
+### 🌱 S01 · Terminal Genesis
 Your first night in a headless Linux environment. No GUI. Just you and the terminal.
 
 Key skills: `ls` `cd` `pwd` `mkdir` `cat` `find` `man` · FHS navigation · SSH · Git setup
@@ -119,9 +119,7 @@ Key skills: `ls` `cd` `pwd` `mkdir` `cat` `find` `man` · FHS navigation · SSH 
 ssh jane@janetheta
 ```
 
----
-
-### 🔐 Night 2 · The Keymaster
+### 🔐 S02 · The Keymaster
 Who can read it? Who can write it? Who can run it? Linux answers these questions
 with nine bits and three letters: `rwx`.
 
@@ -133,9 +131,7 @@ sudo chmod 640 /etc/shadow
 sudo chown root:shadow /etc/shadow
 ```
 
----
-
-### 🔍 Night 3 · Stream Editing & Automation
+### 🔍 S03 · Stream Editing & Automation
 10,000 lines of web server logs. Three attackers buried in the noise.
 One pipeline to find them all.
 
@@ -147,51 +143,65 @@ grep "UNION SELECT" ~/access.log \
     > ~/threat_ips.txt
 ```
 
+### 🎯 TLAB-01 · Operation Clean Sweep
+Full threat hunt mission. Extracted malicious IPs from web logs, correlated with auth logs, and filed a final threat report.
+
+Key skills: pipeline chaining · log correlation · threat reporting
+```bash
+# Artifact: final_threat_report.txt
+```
+
 ---
 
 ## 📡 Week 02 — Completed
 
-### 🌐 Night 1 · Network Recon
-Your machine has an IP. Your network has a gateway. Tonight you learn how to
-read, interrogate, and verify both.
+### 🌐 S04 · Operation Broken Link
+Your machine is blind. Restore the wire. Bring the interface up and manually add the default gateway route.
 
-Key skills: `ip addr` `ip route` `ping` `traceroute` `nmcli`
+Key skills: `ip link` `ip addr` `ip route` `traceroute` · Layer 1-3 recovery
 ```bash
-ip addr show
-ip route show
-ping -c 4 8.8.8.8
-traceroute google.com
+sudo ip link set enp0s3 up
+sudo ip route add default via 10.0.0.1
+# Artifact: network_audit.txt
 ```
 
----
-
-### 🧮 Night 2 · The Subnetting Crucible
-Binary math. CIDR notation. Network IDs and Broadcast IDs.
+### 🧮 S05 · Operation Grid Lock
+You can see the network but can't talk to the gateway. Your subnet mask has isolated you mathematically.
 
 Key skills: `ipcalc` · binary conversion · CIDR · subnet masks
 ```bash
-ipcalc 10.50.50.1/26
+ipcalc 10.50.50.150/26
+sudo ip addr del 10.50.50.150/26 dev enp0s3
+sudo ip addr add 10.50.50.150/24 dev enp0s3
 # Artifact: subnet_blueprint.txt
 ```
 
----
-
-### 🔌 Night 3 · Protocol Interrogation
-DNS poisoning. Hidden services. Ports that should not be open.
+### 🔌 S06 · Operation Hidden Door
+DNS poisoning. A cloaked local service. Find it, fix it, document it.
 
 Key skills: `ss -tuln` `curl -I` `dig` `cat /etc/hosts` · TCP vs UDP
 ```bash
-ss -tuln
-curl -I localhost:8080
+cat /etc/hosts
+sudo nano /etc/hosts
 dig google.com
+ss -tuln
 # Artifact: protocol_audit.txt
+```
+
+### 🎯 TLAB-02 · Operation Blackout
+Full remediation mission across Layers 3, 4, and 7. Restored subnet, cleansed DNS poisoning, captured TCP 3-way handshake as forensic proof.
+
+Key skills: `ip addr` `ip route` `/etc/hosts` `tcpdump` · OSI Layers 3/4/7
+```bash
+sudo tcpdump -i enp0s3 host 192.168.10.193 -n -c 10
+# Artifact: tlab_report.txt
 ```
 
 ---
 
-## 🐍 Week 03 — In Progress
+## 🐍 Week 03 — Completed
 
-### 🔭 Night 1 · The Automation Forge
+### 🔭 S07 · The Automation Forge
 No Nmap. Just Python and raw sockets. Write a script that checks whether
 Port 22 is open across a list of target IPs — and does it automatically.
 
@@ -201,28 +211,24 @@ python3 port_check.py
 # Artifact: port_check.py
 ```
 
----
-
-### 🚨 Night 2 · The Paper Trail
+### 🚨 S08 · The Paper Trail
 Parse a simulated auth log. Extract every failed login attempt.
 Write the findings to a clean report automatically.
 
 Key skills: `python3` · file I/O · `with open()` · `try/except` · string matching
 ```bash
 python3 brute_detector.py
-# Artifact: brute_detector.py
+# Artifacts: brute_detector.py · brute_report.txt
 ```
 
----
-
-### 🔎 Night 3 · The Automation Pivot
+### 🔎 S09 · The Automation Pivot
 Give Python the keys to the OS. Run system commands from inside a script,
 capture the output, and export a structured JSON security alert.
 
 Key skills: `python3` · `subprocess` · `json` · `os` · process interrogation
 ```bash
 python3 system_auditor.py
-# Artifact: system_auditor.py
+# Artifacts: system_auditor.py · incident_response.py · security_alert.json · handshake.txt
 ```
 
 ---
@@ -253,9 +259,10 @@ third pillar of the AAA framework.
 
 ## 🛠️ TA Notes
 
-> Hi, I'm Jane — your TA for Phase 1. This repo is my own student artifact repo,
-> built to show you what yours can look like. Every script, every note, every
-> commit message here was written with intention.
+> Hi, I'm Jane — your TA for your time as a Cybersecurity Fellow 
+in the Class of 2026 Cohort. This repo is my own student artifact repo,
+built to show you what yours can look like. Every script, every note, 
+every commit message here was written with intention.
 >
 > You don't have to be perfect. You have to be consistent.
 > Push something every week. Document what you learned.
@@ -275,4 +282,4 @@ National Institute of Standards and Technology.
 
 ---
 
-**Built intentionally · Current Status: Updated weekly · TKH IF 2026**
+**Built intentionally · Current Status: Updated Often · TKH IF 2026**
